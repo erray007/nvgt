@@ -1,0 +1,35 @@
+Import("env")
+
+# 1. ScriptArray'i OYUNUN ANA AYARLARIYLA derle (Kritik Nokta!)
+scriptarray = env.SharedObject("scriptarray", "#ASAddon/plugin/scriptarray.cpp")
+
+# 2. Opus dosya listesi (Klasorun icinden topluyoruz)
+opus_src = Glob("opus/src/*.c") + Glob("opus/celt/*.c") + Glob("opus/silk/*.c") + Glob("opus/silk/float/*.c")
+opus_src = [f for f in opus_src if "demo" not in str(f) and "_arm" not in str(f) and "_mips" not in str(f)]
+
+# 3. Bizim plugin ve Opus icin ozel ortam
+plugin_env = env.Clone()
+plugin_env.Append(CPPDEFINES=["OPUS_BUILD", "USE_ALLOCA"])
+plugin_env.Append(CPPPATH=["opus/include", "opus/celt", "opus/silk", "opus/silk/float", "#ASAddon/plugin", "#ASAddon/include"])
+
+# --- PLATFORM AYARI ---
+# Linux ise matematik kutuphanesini (-lm) ekleyelim, lazim olabilir.
+if env["PLATFORM"] == "posix":
+    plugin_env.Append(LIBS=["m"])
+
+# 4. DLL Olusturma
+sources = ["encoder_plugin.cpp"] + opus_src
+# scriptarray objesini listeye ekliyoruz
+final_objs = [scriptarray] + plugin_env.SharedObject(sources)
+
+# --- USER32 AYARI ---
+# Sadece Windows ise user32 ekle, yoksa bos liste
+target_libs = []
+if env["PLATFORM"] == "win32":
+    target_libs = ["user32"]
+
+if ARGUMENTS.get("no_shared_plugins", "0") == "0":
+    # Linkleme islemini ana env yapsin, kutuphaneleri duruma gore veriyoruz
+    env.SharedLibrary("#release/lib/encoder_plugin", final_objs, LIBS=target_libs)
+
+Return()

@@ -1,11 +1,14 @@
 Import("env")
 
-# Eger komut satirinda map_system=1 denmezse derlemeyi atla
-
+# Kanka burada diyoruz ki: Eger isletim sistemi Windows ise user32 ekle, degilse bosver.
+gerekli_kutuphaneler = []
+if env["PLATFORM"] == "win32":
+    gerekli_kutuphaneler = ["user32"]
 
 if ARGUMENTS.get("no_shared_plugins", "0") == "0":
-    # Shared Library (DLL) olarak derle: map_system.dll (veya .so)
-    env.SharedLibrary("#release/lib/map_system", ["map_system.cpp"], LIBS = ["user32"])
+    # Shared Library (DLL/SO) olarak derle
+    # Bak LIBS kismina artik ozel listemizi koyduk
+    env.SharedLibrary("#release/lib/map_system", ["map_system.cpp"], LIBS = gerekli_kutuphaneler)
 
 # Statik kutuphane olarak derle (Gomulu sistemler icin)
 static = env.Object("map_system_static", "map_system.cpp", CPPDEFINES = [("NVGT_PLUGIN_STATIC", "map_system")])
