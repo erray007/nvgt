@@ -1,352 +1,64 @@
-name: release
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-      - fallback
-    tags:
-      - "*"
-    paths-ignore:
-      - "web/**"
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  mac_build:
-    runs-on: macos-14
-    steps:
-    - uses: actions/checkout@v5
-      with:
-        submodules: true
-    - uses: actions/cache@v4
-      with:
-        path: macosdev
-        key: macosdev-${{ hashFiles('vcpkg/ports/**', 'vcpkg/triplets/**', 'vcpkg/*.json', '.git/modules/vcpkg/bin/HEAD') }}
-      id: cache
-    - name: build dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-      run: python3 vcpkg/build_dependencies.py --archive
-    - name: publish dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main' && github.event.repository.fork == false }}
-      run: |
-        curl -u "${{secrets.CIFTP}}" -s -T macosdev.zip ftp://nvgt.dev
-        curl -H "X-Auth: ${{secrets.CIPHP}}" -s "https://nvgt.dev/ci/devlibs_update.php"
-    - name: build
-      run: |
-        cp build/build_macos.sh .
-        sudo chmod +x build_macos.sh
-        ./build_macos.sh ci
-    - uses: actions/upload-artifact@v4
-      with:
-        name: mac_release
-        path: 'release'
+name: Kiral Build
 
+on: [push, workflow_dispatch]
+
+jobs:
+  # --- LINUX ÝÇÝN DERLEME ---
   linux_build:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v4
       with:
-        submodules: true
-    - uses: actions/cache@v4
-      with:
-        path: lindev
-        key: lindev-${{ hashFiles('vcpkg/ports/**', 'vcpkg/triplets/**', 'vcpkg/*.json', '.git/modules/vcpkg/bin/HEAD') }}
-      id: cache
-    - name: build dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        submodules: true # Yan kütüphaneleri de çeker
+
+    # Linux için gerekli tonla kütüphaneyi yüklüyoruz
+    - name: Kutuphaneleri Yukle
       run: |
         sudo apt update
-        sudo apt full-upgrade -y
         sudo apt install -y build-essential libtool mesa-common-dev libxext-dev libxcursor-dev ladspa-sdk libxcomposite-dev libsystemd-dev autoconf libxxf86vm-dev libgl1-mesa-dev libxinerama-dev libx11-dev libltdl-dev libgtk-4-dev libglib2.0-dev libspeechd-dev libudev-dev linux-libc-dev libxrandr-dev libxrender-dev libwayland-dev pkg-config xorg-dev libglu1-mesa-dev libxft-dev libgsasl-dev clang python3-jinja2 zip gcc-aarch64-linux-gnu g++-aarch64-linux-gnu autoconf autoconf-archive automake libtool
-        python3 vcpkg/build_dependencies.py --archive
-    - name: publish dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main' && github.event.repository.fork == false }}
-      run: |
-        curl -u "${{secrets.CIFTP}}" -s -T lindev.zip ftp://nvgt.dev
-        curl -H "X-Auth: ${{secrets.CIPHP}}" -s "https://nvgt.dev/ci/devlibs_update.php"
-    - name: build
+
+    # NVGT'nin kendi kütüphanelerini hazýrlýyoruz (Þifresiz)
+    - name: Bagimliliklari Derle
+      run: python3 vcpkg/build_dependencies.py --archive
+
+    # Asýl derleme iþlemi (Scons ile)
+    - name: Derle Baba
       run: |
         pip3 install scons
         sudo chmod +x build/build_linux.sh
         ./build/build_linux.sh ci
+
+    # Sonucu paketleyip sana sunuyoruz
     - uses: actions/upload-artifact@v4
       with:
-        name: linux_release
+        name: linux_cikti
         path: 'release'
 
-  android_build:
-    runs-on: macos-14
-    steps:
-    - uses: actions/checkout@v5
-      with:
-        submodules: true
-    - uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-        cache: 'gradle'
-    - uses: nttld/setup-ndk@v1
-      with:
-        ndk-version: r29
-        link-to-sdk: true
-        add-to-path: true
-    - uses: actions/cache@v4
-      with:
-        path: droidev
-        key: droidev-${{ hashFiles('vcpkg/ports/**', 'vcpkg/triplets/**', 'vcpkg/*.json', '.git/modules/vcpkg/bin/HEAD') }}
-      id: cache
-    - name: build dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-      run: python3 vcpkg/build_dependencies.py --archive arm64-android
-    - name: publish dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main' && github.event.repository.fork == false }}
-      run: |
-        curl -u "${{secrets.CIFTP}}" -s -T droidev.zip ftp://nvgt.dev
-        curl -H "X-Auth: ${{secrets.CIPHP}}" -s "https://nvgt.dev/ci/devlibs_update.php"
-    - name: keystore_official
-      if: github.event.repository.fork == false
-      run: |
-        cd jni
-        echo "${{secrets.ANDROID_RUNNER_KEYSTORE}}" > android_enc.keystore
-        cat android_enc.keystore | base64 -d > android.keystore
-        echo "ANDROID_RUNNER_KEYSTORE_PW=${{secrets.ANDROID_RUNNER_KEYSTORE_PW}}" >> $GITHUB_ENV
-        cd ..
-    - name: keystore_unofficial
-      if: github.event.repository.fork == true
-      run: |
-        cd jni
-        keytool -genkey -keyalg RSA -keysize 2048 -v -keystore android.keystore -dname cn=NVGT -storepass Android1422207 -validity 10000 -alias app
-        echo "ANDROID_RUNNER_KEYSTORE_PW=Android1422207">>$GITHUB_ENV
-        cd ..
-    - name: build
-      run: |
-        cd jni
-        ./gradlew assembleRunnerRelease AssembleStubRelease --no-daemon -Pandroid.injected.signing.store.file=android.keystore -Pandroid.injected.signing.store.password=${{env.ANDROID_RUNNER_KEYSTORE_PW}} -Pandroid.injected.signing.key.alias=app -Pandroid.injected.signing.key.password="${{env.ANDROID_RUNNER_KEYSTORE_PW}}"
-        mv build/outputs/apk/runner/release/nvgt-runner-release.apk ../release/nvgt.apk
-        cd ..
-    - uses: actions/upload-artifact@v4
-      with:
-        name: android_release
-        path: 'release'
-
+  # --- WINDOWS ÝÇÝN DERLEME ---
   windows_build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v4
       with:
         submodules: true
+
     - uses: jwlawson/actions-setup-cmake@v2
       with:
-        cmake-version: '4.0.1'
-    - uses: actions/cache@v4
-      with:
-        path: windev
-        key: windev-${{ hashFiles('vcpkg/ports/**', 'vcpkg/triplets/**', 'vcpkg/*.json', '.git/modules/vcpkg/bin/HEAD') }}
-      id: cache
-    - name: build dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        cmake-version: '3.25.1'
+
+    # NVGT kütüphaneleri (Windows versiyonu)
+    - name: Bagimliliklari Derle
       run: python3 vcpkg/build_dependencies.py --archive
-    - name: publish dependencies
-      if: ${{ steps.cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main' && github.event.repository.fork == false }}
-      run: |
-        curl -u "${{secrets.CIFTP}}" -s -T windev.zip ftp://nvgt.dev
-        curl -H "X-Auth: ${{secrets.CIPHP}}" -s "https://nvgt.dev/ci/devlibs_update.php"
-    - name: build
+
+    # Derleme iþlemi
+    - name: Derle Baba
       run: |
         pip3 install scons
         choco install -y upx
         scons -s no_upx=0
+
+    # Sonucu paketleyip sana sunuyoruz
     - uses: actions/upload-artifact@v4
       with:
-        name: windows_release
+        name: windows_cikti
         path: 'release'
-
-  windows_package:
-    runs-on: windows-2022
-    needs: ["android_build", "linux_build", "mac_build", "windows_build"]
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/download-artifact@v4
-    - name: set_version
-      run: |
-        python3 build/ci_set_version.py
-    - name: package
-      run: |
-        rm -r release
-        mv windows_release release
-        cd doc
-        pip3 install -r requirements.txt
-        cd OSL
-        python3 make_osl_document.py
-        cd ..
-        python3 docgen.py
-        cd ..
-        cp android_release/stub/* release/stub
-        cp -r linux_release/lib release/lib_linux
-        cp linux_release/stub/* release/stub
-        cp -r mac_release/lib release/lib_mac
-        cp mac_release/stub/* release/stub
-        cd install
-        iscc nvgt.iss
-        cd ..
-    - uses: actions/upload-artifact@v4
-      with:
-        name: windows_package
-        path: 'install/nvgt_${{env.nvgt_version}}.exe'
-
-  mac_package:
-    runs-on: macos-14
-    needs: ["android_build", "linux_build", "mac_build", "windows_build"]
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/download-artifact@v4
-    - name: set_version
-      run: |
-        python3 build/ci_set_version.py
-    - name: import_certs
-      if: github.event.repository.fork == false
-      uses: apple-actions/import-codesign-certs@v3
-      with: 
-        p12-file-base64: ${{ secrets.MACOS_SIGNING_CERT }}
-        p12-password: ${{ secrets.MACOS_SIGNING_CERT_PASSWORD }}
-    - name: package
-      run: |
-        rm -r release
-        mv mac_release release
-        chmod +x release/nvgt
-        cd doc
-        pip3 install --user -r requirements.txt --break-system-packages
-        cd OSL
-        python3 make_osl_document.py
-        cd ..
-        python3 docgen.py
-        cd ..
-        cp android_release/stub/* release/stub
-        cp -r linux_release/lib release/lib_linux
-        cp linux_release/stub/* release/stub
-        cp -r windows_release/lib release/lib_windows
-        cp windows_release/stub/* release/stub
-        cd install
-        python3 make_macos_app.py ../release no_dmg
-        cd ..
-    - name: sign_package
-      if: github.event.repository.fork == false
-      run: |
-        cd install
-        codesign --deep --force --options runtime --entitlements macos-entitlements.plist --timestamp -s ${{secrets.MACOS_SIGNING_TEAM_ID}} nvgt.app
-        hdiutil create -srcfolder nvgt.app nvgt_${{env.nvgt_version}}.dmg
-        codesign --deep --force --options runtime --entitlements macos-entitlements.plist --timestamp -s ${{secrets.MACOS_SIGNING_TEAM_ID}} nvgt_${{env.nvgt_version}}.dmg
-        xcrun notarytool submit nvgt_${{env.nvgt_version}}.dmg --wait ${{secrets.MACOS_SIGNING_NOTARY_AUTH}}
-        xcrun stapler staple nvgt_${{env.nvgt_version}}.dmg
-        cd ..
-    - name: unsigned_package
-      if: github.event.repository.fork == true
-      run: |
-        cd install
-        hdiutil create -srcfolder nvgt.app nvgt_${{env.nvgt_version}}.dmg
-        cd ..
-    - uses: actions/upload-artifact@v4
-      with:
-        name: mac_package
-        path: 'install/nvgt_${{env.nvgt_version}}.dmg'
-
-  linux_package:
-    runs-on: ubuntu-latest
-    needs: ["android_build", "linux_build", "mac_build", "windows_build"]
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/download-artifact@v4
-    - name: set_version
-      run: |
-        python3 build/ci_set_version.py
-    - name: package
-      run: |
-        rm -r release
-        mv linux_release release
-        chmod +x release/nvgt
-        python3 -m venv venv --upgrade-deps
-        chmod +x venv/bin/activate
-        source ./venv/bin/activate
-        cd doc
-        pip3 install -r requirements.txt
-        cd OSL
-        python3 make_osl_document.py
-        cd ..
-        python3 docgen.py
-        cd ..
-        cp android_release/stub/* release/stub
-        cp -r mac_release/lib release/lib_mac
-        cp mac_release/stub/* release/stub
-        cp -r windows_release/lib release/lib_windows
-        cp windows_release/stub/* release/stub
-        cd release
-        tar -czf "../nvgt_$nvgt_version.tar.gz" *
-        cd ..
-    - uses: actions/upload-artifact@v4
-      with:
-        name: linux_package
-        path: 'nvgt_${{env.nvgt_version}}.tar.gz'
-
-  publish_latest:
-    runs-on: ubuntu-latest
-    needs: ["windows_package", "mac_package", "linux_package"]
-    if: ( github.ref == 'refs/heads/main' || github.ref == 'refs/heads/fallback' ) && github.event.repository.fork == false
-    permissions:
-      contents: write
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: '*_package'
-    - uses: actions/download-artifact@v4
-      with:
-        name: android_release
-        path: android_release
-    - name: set_version
-      run: python3 build/ci_set_version.py
-    - name: preprocess
-      run: |
-        mkdir android_package
-        mv android_release/nvgt.apk android_package/nvgt_$nvgt_version.apk
-    - name: publish
-      uses: "marvinpinto/action-automatic-releases@v1.2.1"
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        prerelease: true
-        title: ${{ github.ref == 'refs/heads/main' && 'Latest/Bleeding Edge Development Version' || 'Fallback/Stable Development Version' }}
-        automatic_release_tag: ${{ github.ref == 'refs/heads/main' && 'latest' || 'fallback' }}
-        files: '*_package/nvgt_${{env.nvgt_version}}.*'
-
-  publish_release:
-    runs-on: ubuntu-latest
-    needs: ["windows_package", "mac_package", "linux_package"]
-    if: github.ref_type == 'tag' && github.event.repository.fork == false
-    permissions:
-      contents: write
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: '*_package'
-    - uses: actions/download-artifact@v4
-      with:
-        name: android_release
-        path: android_release
-    - name: set_version
-      run: |
-        python3 build/ci_set_version.py
-    - name: publish
-      run: |
-        mkdir android_package
-        mv android_release/nvgt.apk android_package/nvgt_android_$nvgt_version.apk
-        curl -u "${{secrets.CIFTP}}" -s -T "android_package/nvgt_$nvgt_version.apk" ftp://nvgt.dev
-        curl -u "${{secrets.CIFTP}}" -s -T "linux_package/nvgt_$nvgt_version.tar.gz" ftp://nvgt.dev
-        curl -u "${{secrets.CIFTP}}" -s -T "mac_package/nvgt_$nvgt_version.dmg" ftp://nvgt.dev
-        curl -u "${{secrets.CIFTP}}" -s -T "windows_package/nvgt_$nvgt_version.exe" ftp://nvgt.dev
-        curl -H "X-Auth: ${{secrets.CIPHP}}" -s "https://nvgt.dev/ci/release_complete.php?ver=$nvgt_version"
-    - uses: ghalactic/github-release-from-tag@v5
-      with:
-        checksumGenerateAssets: "false"
-        assets: |
-          - path: '*_package/nvgt_${{env.nvgt_version}}.*'

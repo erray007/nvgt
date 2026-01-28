@@ -1,0 +1,14 @@
+Import("env")
+
+# Eger komut satirinda map_system=1 denmezse derlemeyi atla
+
+
+if ARGUMENTS.get("no_shared_plugins", "0") == "0":
+    # Shared Library (DLL) olarak derle: map_system.dll (veya .so)
+    env.SharedLibrary("#release/lib/map_system", ["map_system.cpp"], LIBS = ["user32"])
+
+# Statik kutuphane olarak derle (Gomulu sistemler icin)
+static = env.Object("map_system_static", "map_system.cpp", CPPDEFINES = [("NVGT_PLUGIN_STATIC", "map_system")])
+static = env.StaticLibrary("#build/lib/map_system", [static])
+
+Return("static")
