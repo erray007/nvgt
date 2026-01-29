@@ -1,0 +1,842 @@
+| -- Building x64-linux-dbg                                                                                                                                                 
+| -- Building x64-linux-rel                                                                                                                                                 
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/liblzma_x64-linux/lib/pkgconfig/liblzma.pc                                                                 
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/liblzma_x64-linux/debug/lib/pkgconfig/liblzma.pc                                                           
+| -- Installing: /mnt/d/repos/nvgt/vcpkg/bin/packages/liblzma_x64-linux/share/liblzma/copyright                                                                             
+| -- Performing post-build validation                                                                                                                                       
+| Starting submission of liblzma:x64-linux@5.8.2 to 1 binary cache(s) in the background                                                                                     
+| Elapsed time to handle liblzma:x64-linux: 19 s                                                                                                                            
+| liblzma:x64-linux package ABI: 6015a3516aba7eca15db5802f5ff656f7023fb9c5e85c008a63142ca2fb9219f                                                                           
+| Completed submission of zstd:x64-linux@1.5.7 to 1 binary cache(s) in 349 ms                                                                                               
+| Installing 17/51 lz4:x64-linux@1.10.0...                                                                                                                                  
+| Building lz4:x64-linux@1.10.0...                                                                                                                                          
+| /mnt/d/repos/nvgt/vcpkg/triplets/x64-linux.cmake: info: loaded overlay triplet from here                                                                                  
+| Downloading https://github.com/lz4/lz4/archive/v1.10.0.tar.gz -> lz4-lz4-v1.10.0.tar.gz                                                                                   
+| Successfully downloaded lz4-lz4-v1.10.0.tar.gz                                                                                                                            
+| -- Extracting source /mnt/d/repos/nvgt/vcpkg/bin/downloads/lz4-lz4-v1.10.0.tar.gz                                                                                         
+| -- Applying patch target-lz4-lz4.diff                                                                                                                                     
+| -- Using source at /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/lz4/src/v1.10.0-61bd08d80e.clean                                                                                
+| -- Configuring x64-linux                                                                                                                                                  
+| -- Building x64-linux-dbg                                                                                                                                                 
+| -- Building x64-linux-rel                                                                                                                                                 
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/lz4_x64-linux/lib/pkgconfig/liblz4.pc                                                                      
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/lz4_x64-linux/debug/lib/pkgconfig/liblz4.pc                                                                
+| -- Installing: /mnt/d/repos/nvgt/vcpkg/bin/packages/lz4_x64-linux/share/lz4/usage                                                                                         
+| -- Installing: /mnt/d/repos/nvgt/vcpkg/bin/packages/lz4_x64-linux/share/lz4/copyright                                                                                     
+| -- Performing post-build validation                                                                                                                                       
+| Starting submission of lz4:x64-linux@1.10.0 to 1 binary cache(s) in the background                                                                                        
+| Elapsed time to handle lz4:x64-linux: 9.2 s                                                                                                                               
+| lz4:x64-linux package ABI: 7e4315abc0d3d854bcf048216fca174d5ab2162301b70dcf98ce21e1dc14742b                                                                               
+| Completed submission of liblzma:x64-linux@5.8.2 to 1 binary cache(s) in 140 ms                                                                                            
+| Installing 18/51 libarchive[bzip2,core,lz4,lzma,zstd]:x64-linux@3.8.5...                                                                                                  
+| Building libarchive[bzip2,core,lz4,lzma,zstd]:x64-linux@3.8.5...                                                                                                          
+| /mnt/d/repos/nvgt/vcpkg/triplets/x64-linux.cmake: info: loaded overlay triplet from here                                                                                  
+| Downloading https://github.com/libarchive/libarchive/archive/v3.8.5.tar.gz -> libarchive-libarchive-v3.8.5.tar.gz                                                         
+| Successfully downloaded libarchive-libarchive-v3.8.5.tar.gz                                                                                                               
+| -- Extracting source /mnt/d/repos/nvgt/vcpkg/bin/downloads/libarchive-libarchive-v3.8.5.tar.gz                                                                            
+| -- Applying patch fix-buildsystem.patch                                                                                                                                   
+| -- Applying patch fix-deps.patch                                                                                                                                          
+| -- Using source at /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libarchive/src/v3.8.5-01afe28357.clean                                                                          
+| -- Configuring x64-linux                                                                                                                                                  
+| -- Building x64-linux-dbg                                                                                                                                                 
+| -- Building x64-linux-rel                                                                                                                                                 
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/lib/pkgconfig/libarchive.pc                                                           
+| -- Fixing pkgconfig file: /mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/debug/lib/pkgconfig/libarchive.pc                                                     
+| -- Installing: /mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/share/libarchive/usage                                                                           
+| -- Installing: /mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/share/libarchive/copyright                                                                       
+| -- Adjusted RPATH of '/mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/debug/lib/libarchive.so.13.8.5' (From '' -> To '$ORIGIN')                                 
+| -- Adjusted RPATH of '/mnt/d/repos/nvgt/vcpkg/bin/packages/libarchive_x64-linux/lib/libarchive.so.13.8.5' (From '' -> To '$ORIGIN')                                       
+| -- Performing post-build validation                                                                                                                                       
+| Starting submission of libarchive[bzip2,core,lz4,lzma,zstd]:x64-linux@3.8.5 to 1 binary cache(s) in the background                                                        
+| Elapsed time to handle libarchive:x64-linux: 1 min                                                                                                                        
+| libarchive:x64-linux package ABI: 1a60d5a87d9349fe49135973395489058a521aa8c2671056a0f7865be68a4f86                                                                        
+| Completed submission of lz4:x64-linux@1.10.0 to 1 binary cache(s) in 82.7 ms                                                                                              
+| Installing 19/51 vcpkg-make:x64-linux@2025-10-26...                                                                                                                       
+| Building vcpkg-make:x64-linux@2025-10-26...                                                                                                                               
+| /mnt/d/repos/nvgt/vcpkg/triplets/x64-linux.cmake: info: loaded overlay triplet from here                                                                                  
+| Downloading automake-1.17.tar.gz, trying https://ftpmirror.gnu.org/gnu/automake/automake-1.17.tar.gz                                                                      
+| Successfully downloaded automake-1.17.tar.gz                                                                                                                              
+| -- Extracting source /mnt/d/repos/nvgt/vcpkg/bin/downloads/automake-1.17.tar.gz                                                                                           
+| -- Using source at /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/vcpkg-make/src/automake-1-c362683103.clean                                                                      
+| -- Getting CMake variables for x64-linux                                                                                                                                  
+| -- Loading CMake variables from /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/vcpkg-make/cmake-get-vars_C_CXX-x64-linux.cmake.log                                                
+| -- x64-linux autotools triplet: x86_64-pc-linux-gnu (from config.guess)                                                                                                   
+| -- Performing post-build validation                                                                                                                                       
+| Starting submission of vcpkg-make:x64-linux@2025-10-26 to 1 binary cache(s) in the background                                                                             
+| Elapsed time to handle vcpkg-make:x64-linux: 6 s                                                                                                                          
+| vcpkg-make:x64-linux package ABI: 09bb83971f80567c6337baebb5ce6cb4ad3a9e59d48038dc2b7bd68a68e91d3b                                                                        
+| Completed submission of libarchive[bzip2,core,lz4,lzma,zstd]:x64-linux@3.8.5 to 1 binary cache(s) in 631 ms                                                               
+| Installing 20/51 libffi:x64-linux@3.5.1...                                                                                                                                
+| Building libffi:x64-linux@3.5.1...                                                                                                                                        
+| /mnt/d/repos/nvgt/vcpkg/triplets/x64-linux.cmake: info: loaded overlay triplet from here                                                                                  
+| /mnt/d/repos/nvgt/vcpkg/./ports/libffi: info: installing overlay port from here                                                                                           
+| Downloading https://github.com/libffi/libffi/releases/download/v3.5.1/libffi-3.5.1.tar.gz -> libffi-3.5.1.tar.gz                                                          
+| Successfully downloaded libffi-3.5.1.tar.gz                                                                                                                               
+| -- Extracting source /mnt/d/repos/nvgt/vcpkg/bin/downloads/libffi-3.5.1.tar.gz                                                                                            
+| -- Applying patch allow-macos-universal.diff                                                                                                                              
+| -- Applying patch dll-bindir.diff                                                                                                                                         
+| -- Using source at /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/src/libffi-3-a8e988eb55.clean                                                                            
+| -- Getting CMake variables for x64-linux                                                                                                                                  
+| -- Loading CMake variables from /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/cmake-get-vars_ASM_C_CXX-x64-linux.cmake.log                                                
+| -- Configuring x64-linux-dbg                                                                                                                                              
+| CMake Error at scripts/cmake/vcpkg_execute_required_process.cmake:127 (message):                                                                                          
+|     Command failed: /usr/bin/bash -c "V=1 CC='/usr/bin/cc' CXX='/usr/bin/c++' CC_FOR_BUILD='/usr/bin/cc' CPP_FOR_BUILD='/usr/bin/cc -E' CXX_FOR_BUILD='/usr/bin/c++' CCAS='/usr/bin/cc -c' AS='/usr/bin/cc -c' NM='/usr/bin/nm' RC='' WINDRES='' DLLTOOL='CMAKE_DLLTOOL-NOTFOUND' STRIP='/usr/bin/strip' OBJDUMP='/usr/bin/objdump' RANLIB='/usr/bin/ranlib' AR='/usr/bin/ar' LD='/usr/bin/ld' ./../src/libffi-3-a8e988eb55.clean/configure \"--enable-portable-binary\" \"--disable-docs\" \"--disable-multi-os-directory\" \"lt_cv_deplibs_check_method=pass_all\" \"--prefix=/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug\" \"--bindir=\\${prefix}/../tools/libffi/debug/bin\" \"--sbindir=\\${prefix}/../tools/libffi/debug/sbin\" \"--libdir=\\${prefix}/lib\" \"--includedir=\\${prefix}/../include\" \"--mandir=\\${prefix}/share/libffi\" \"--docdir=\\${prefix}/share/libffi\" \"--datarootdir=\\${prefix}/share/libffi\" \"--disable-shared\" \"--enable-static\""                                                                               
+|     Working Directory: /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/x64-linux-dbg                                                                                        
+|     Error code: 2                                                                                                                                                         
+|     See logs for more information:                                                                                                                                        
+|       /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-config.log                                                                                       
+|       /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-err.log                                                                                          
+|                                                                                                                                                                           
+| Call Stack (most recent call first):                                                                                                                                      
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make.cmake:41 (vcpkg_execute_required_process)                                                 
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make.cmake:339 (vcpkg_run_shell)                                                               
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make_configure.cmake:109 (vcpkg_make_run_configure)                                            
+|   /mnt/d/repos/nvgt/vcpkg/ports/libffi/portfile.cmake:43 (vcpkg_make_configure)                                                                                           
+|   scripts/ports.cmake:206 (include)                                                                                                                                       
+|                                                                                                                                                                           
+|                                                                                                                                                                           
+| error: building libffi:x64-linux failed with: BUILD_FAILED                                                                                                                
+| See https://learn.microsoft.com/vcpkg/troubleshoot/build-failures?WT.mc_id=vcpkg_inproduct_cli for more information.                                                      
+| Elapsed time to handle libffi:x64-linux: 3.8 s                                                                                                                            
+| Please ensure you're using the latest port files with `git pull` and `vcpkg update`.                                                                                      
+| Then check for known issues at:                                                                                                                                           
+|   https://github.com/microsoft/vcpkg/issues?q=is%3Aissue+is%3Aopen+in%3Atitle+libffi                                                                                      
+| You can submit a new issue at:                                                                                                                                            
+|   https://github.com/microsoft/vcpkg/issues/new?title=%5Blibffi%5D%20build%20error%20on%20x64-linux&body=Copy%20issue%20body%20from%20collapsed%20section%20%22issue_body.md%22%20in%20the%20ci%20log%20output                                                                                                                                        
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::group::issue_body.md                                                                                                     
+| Package: libffi:x64-linux@3.5.1                                                                                                                                           
+|                                                                                                                                                                           
+| **Host Environment**                                                                                                                                                      
+|                                                                                                                                                                           
+| - Host: x64-linux                                                                                                                                                         
+| - Compiler: GNU 11.4.0                                                                                                                                                    
+| - CMake Version: 3.31.10                                                                                                                                                  
+| -    vcpkg-tool version: 2025-12-16-44bb3ce006467fc13ba37ca099f64077b8bbf84d                                                                                              
+|     vcpkg-scripts version: 10a80bc303 2026-01-09 (3 weeks ago)                                                                                                            
+|                                                                                                                                                                           
+| **To Reproduce**                                                                                                                                                          
+|                                                                                                                                                                           
+| `vcpkg install `                                                                                                                                                          
+|                                                                                                                                                                           
+| **Failure logs**                                                                                                                                                          
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+| Downloading https://github.com/libffi/libffi/releases/download/v3.5.1/libffi-3.5.1.tar.gz -> libffi-3.5.1.tar.gz                                                          
+| Successfully downloaded libffi-3.5.1.tar.gz                                                                                                                               
+| -- Extracting source /mnt/d/repos/nvgt/vcpkg/bin/downloads/libffi-3.5.1.tar.gz                                                                                            
+| -- Applying patch allow-macos-universal.diff                                                                                                                              
+| -- Applying patch dll-bindir.diff                                                                                                                                         
+| -- Using source at /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/src/libffi-3-a8e988eb55.clean                                                                            
+| -- Getting CMake variables for x64-linux                                                                                                                                  
+| -- Loading CMake variables from /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/cmake-get-vars_ASM_C_CXX-x64-linux.cmake.log                                                
+| -- Configuring x64-linux-dbg                                                                                                                                              
+| CMake Error at scripts/cmake/vcpkg_execute_required_process.cmake:127 (message):                                                                                          
+|     Command failed: /usr/bin/bash -c "V=1 CC='/usr/bin/cc' CXX='/usr/bin/c++' CC_FOR_BUILD='/usr/bin/cc' CPP_FOR_BUILD='/usr/bin/cc -E' CXX_FOR_BUILD='/usr/bin/c++' CCAS='/usr/bin/cc -c' AS='/usr/bin/cc -c' NM='/usr/bin/nm' RC='' WINDRES='' DLLTOOL='CMAKE_DLLTOOL-NOTFOUND' STRIP='/usr/bin/strip' OBJDUMP='/usr/bin/objdump' RANLIB='/usr/bin/ranlib' AR='/usr/bin/ar' LD='/usr/bin/ld' ./../src/libffi-3-a8e988eb55.clean/configure \"--enable-portable-binary\" \"--disable-docs\" \"--disable-multi-os-directory\" \"lt_cv_deplibs_check_method=pass_all\" \"--prefix=/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug\" \"--bindir=\\${prefix}/../tools/libffi/debug/bin\" \"--sbindir=\\${prefix}/../tools/libffi/debug/sbin\" \"--libdir=\\${prefix}/lib\" \"--includedir=\\${prefix}/../include\" \"--mandir=\\${prefix}/share/libffi\" \"--docdir=\\${prefix}/share/libffi\" \"--datarootdir=\\${prefix}/share/libffi\" \"--disable-shared\" \"--enable-static\""                                                                               
+|     Working Directory: /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/x64-linux-dbg                                                                                        
+|     Error code: 2                                                                                                                                                         
+|     See logs for more information:                                                                                                                                        
+|       /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-config.log                                                                                       
+|       /mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-err.log                                                                                          
+|                                                                                                                                                                           
+| Call Stack (most recent call first):                                                                                                                                      
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make.cmake:41 (vcpkg_execute_required_process)                                                 
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make.cmake:339 (vcpkg_run_shell)                                                               
+|   /mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/share/vcpkg-make/vcpkg_make_configure.cmake:109 (vcpkg_make_run_configure)                                            
+|   /mnt/d/repos/nvgt/vcpkg/ports/libffi/portfile.cmake:43 (vcpkg_make_configure)                                                                                           
+|   scripts/ports.cmake:206 (include)                                                                                                                                       
+|                                                                                                                                                                           
+|                                                                                                                                                                           
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+|                                                                                                                                                                           
+| <details><summary>/mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-err.log</summary>                                                                    
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+| configure: error: cannot run /bin/bash ./../src/libffi-3-a8e988eb55.clean/config.sub                                                                                      
+| ```                                                                                                                                                                       
+| </details>                                                                                                                                                                
+|                                                                                                                                                                           
+| <details><summary>/mnt/d/repos/nvgt/vcpkg/bin/buildtrees/libffi/config-x64-linux-dbg-config.log</summary>                                                                 
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+| This file contains any messages produced by compilers while                                                                                                               
+| running configure, to aid debugging if configure makes a mistake.                                                                                                         
+|                                                                                                                                                                           
+| It was created by libffi configure 3.5.1, which was                                                                                                                       
+| generated by GNU Autoconf 2.72.  Invocation command line was                                                                                                              
+|                                                                                                                                                                           
+|   $ ./../src/libffi-3-a8e988eb55.clean/configure --enable-portable-binary --disable-docs --disable-multi-os-directory lt_cv_deplibs_check_method=pass_all --prefix=/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug '--bindir=${prefix}/../tools/libffi/debug/bin' '--sbindir=${prefix}/../tools/libffi/debug/sbin' '--libdir=${prefix}/lib' '--includedir=${prefix}/../include' '--mandir=${prefix}/share/libffi' '--docdir=${prefix}/share/libffi' '--datarootdir=${prefix}/share/libffi' --disable-shared --enable-static                                                                                                                                                                           
+|                                                                                                                                                                           
+| ## --------- ##                                                                                                                                                           
+| ## Platform. ##                                                                                                                                                           
+| ## --------- ##                                                                                                                                                           
+|                                                                                                                                                                           
+| hostname = docker-desktop                                                                                                                                                 
+| uname -m = x86_64                                                                                                                                                         
+| uname -r = 6.6.87.2-microsoft-standard-WSL2                                                                                                                               
+| uname -s = Linux                                                                                                                                                          
+| uname -v = #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025                                                                                                            
+|                                                                                                                                                                           
+| /usr/bin/uname -p = x86_64                                                                                                                                                
+| /bin/uname -X     = unknown                                                                                                                                               
+|                                                                                                                                                                           
+| /bin/arch              = x86_64                                                                                                                                           
+| /usr/bin/arch -k       = unknown                                                                                                                                          
+| /usr/convex/getsysinfo = unknown                                                                                                                                          
+| /usr/bin/hostinfo      = unknown                                                                                                                                          
+| /bin/machine           = unknown                                                                                                                                          
+| /usr/bin/oslevel       = unknown                                                                                                                                          
+| /bin/universe          = unknown                                                                                                                                          
+|                                                                                                                                                                           
+| PATH: /opt/acttoolcache/node/18.20.8/x64/bin/                                                                                                                             
+| PATH: /usr/local/sbin/                                                                                                                                                    
+| PATH: /usr/local/bin/                                                                                                                                                     
+| PATH: /usr/sbin/                                                                                                                                                          
+| PATH: /usr/bin/                                                                                                                                                           
+| PATH: /sbin/                                                                                                                                                              
+| PATH: /bin/                                                                                                                                                               
+| PATH: /usr/games/                                                                                                                                                         
+| PATH: /usr/local/games/                                                                                                                                                   
+| PATH: /snap/bin/                                                                                                                                                          
+| PATH: /mnt/d/repos/nvgt/vcpkg/bin/downloads/tools/ninja-1.13.2-linux/                                                                                                     
+|                                                                                                                                                                           
+|                                                                                                                                                                           
+| ## ----------- ##                                                                                                                                                         
+| ## Core tests. ##                                                                                                                                                         
+| ## ----------- ##                                                                                                                                                         
+|                                                                                                                                                                           
+| configure:3048: looking for aux files: ltmain.sh compile missing install-sh config.guess config.sub                                                                       
+| configure:3061:  trying ./../src/libffi-3-a8e988eb55.clean/                                                                                                               
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/ltmain.sh found                                                                                                      
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/compile found                                                                                                        
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/missing found                                                                                                        
+| configure:3072:   ./../src/libffi-3-a8e988eb55.clean/install-sh found                                                                                                     
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/config.guess found                                                                                                   
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/config.sub found                                                                                                     
+| configure:3215: error: cannot run /bin/bash ./../src/libffi-3-a8e988eb55.clean/config.sub                                                                                 
+|                                                                                                                                                                           
+| ## ---------------- ##                                                                                                                                                    
+| ## Cache variables. ##                                                                                                                                                    
+| ## ---------------- ##                                                                                                                                                    
+|                                                                                                                                                                           
+| ac_cv_env_CCASFLAGS_set=                                                                                                                                                  
+| ac_cv_env_CCASFLAGS_value=                                                                                                                                                
+| ac_cv_env_CCAS_set=set                                                                                                                                                    
+| ac_cv_env_CCAS_value='/usr/bin/cc -c'                                                                                                                                     
+| ac_cv_env_CPPFLAGS_set=                                                                                                                                                   
+| ac_cv_env_CPPFLAGS_value=                                                                                                                                                 
+| ac_cv_env_CXXCPP_set=                                                                                                                                                     
+| ac_cv_env_CXXCPP_value=                                                                                                                                                   
+| ac_cv_env_LT_SYS_LIBRARY_PATH_set=                                                                                                                                        
+| ac_cv_env_LT_SYS_LIBRARY_PATH_value=                                                                                                                                      
+| ac_cv_env_build_alias_set=                                                                                                                                                
+| ac_cv_env_build_alias_value=                                                                                                                                              
+| ac_cv_env_host_alias_set=                                                                                                                                                 
+| ac_cv_env_host_alias_value=                                                                                                                                               
+| ac_cv_env_target_alias_set=                                                                                                                                               
+| ac_cv_env_target_alias_value=                                                                                                                                             
+| lt_cv_deplibs_check_method=pass_all                                                                                                                                       
+|                                                                                                                                                                           
+| ## ----------------- ##                                                                                                                                                   
+| ## Output variables. ##                                                                                                                                                   
+| ## ----------------- ##                                                                                                                                                   
+|                                                                                                                                                                           
+| ACLOCAL=''                                                                                                                                                                
+| AMDEPBACKSLASH=''                                                                                                                                                         
+| AMDEP_FALSE=''                                                                                                                                                            
+| AMDEP_TRUE=''                                                                                                                                                             
+| AMTAR=''                                                                                                                                                                  
+| AM_BACKSLASH=''                                                                                                                                                           
+| AM_DEFAULT_V=''                                                                                                                                                           
+| AM_DEFAULT_VERBOSITY=''                                                                                                                                                   
+| AM_LTLDFLAGS=''                                                                                                                                                           
+| AM_RUNTESTFLAGS=''                                                                                                                                                        
+| AM_V=''                                                                                                                                                                   
+| AR='/usr/bin/ar'                                                                                                                                                          
+| AUTOCONF=''                                                                                                                                                               
+| AUTOHEADER=''                                                                                                                                                             
+| AUTOMAKE=''                                                                                                                                                               
+| AWK=''                                                                                                                                                                    
+| BUILD_DOCS_FALSE=''                                                                                                                                                       
+| BUILD_DOCS_TRUE=''                                                                                                                                                        
+| CC='/usr/bin/cc'                                                                                                                                                          
+| CCAS='/usr/bin/cc -c'                                                                                                                                                     
+| CCASDEPMODE=''                                                                                                                                                            
+| CCASFLAGS=''                                                                                                                                                              
+| CCDEPMODE=''                                                                                                                                                              
+| CFLAGS='-fPIC -g'                                                                                                                                                         
+| CPPFLAGS=''                                                                                                                                                               
+| CSCOPE=''                                                                                                                                                                 
+| CTAGS=''                                                                                                                                                                  
+| CXX='/usr/bin/c++'                                                                                                                                                        
+| CXXCPP=''                                                                                                                                                                 
+| CXXDEPMODE=''                                                                                                                                                             
+| CXXFLAGS='-fPIC -g'                                                                                                                                                       
+| CYGPATH_W=''                                                                                                                                                              
+| DEFS=''                                                                                                                                                                   
+| DEPDIR=''                                                                                                                                                                 
+| DLLTOOL='CMAKE_DLLTOOL-NOTFOUND'                                                                                                                                          
+| DSYMUTIL=''                                                                                                                                                               
+| DUMPBIN=''                                                                                                                                                                
+| ECHO_C=''                                                                                                                                                                 
+| ECHO_N='-n'                                                                                                                                                               
+| ECHO_T=''                                                                                                                                                                 
+| EGREP=''                                                                                                                                                                  
+| ETAGS=''                                                                                                                                                                  
+| EXEEXT=''                                                                                                                                                                 
+| FFI_DEBUG_FALSE=''                                                                                                                                                        
+| FFI_DEBUG_TRUE=''                                                                                                                                                         
+| FFI_EXEC_TRAMPOLINE_TABLE=''                                                                                                                                              
+| FFI_EXEC_TRAMPOLINE_TABLE_FALSE=''                                                                                                                                        
+| FFI_EXEC_TRAMPOLINE_TABLE_TRUE=''                                                                                                                                         
+| FFI_VERSION_NUMBER='30501'                                                                                                                                                
+| FFI_VERSION_STRING='3.5.1'                                                                                                                                                
+| FGREP=''                                                                                                                                                                  
+| FILECMD=''                                                                                                                                                                
+| GREP=''                                                                                                                                                                   
+| HAVE_LONG_DOUBLE=''                                                                                                                                                       
+| HAVE_LONG_DOUBLE_VARIANT=''                                                                                                                                               
+| INSTALL_DATA=''                                                                                                                                                           
+| INSTALL_PROGRAM=''                                                                                                                                                        
+| INSTALL_SCRIPT=''                                                                                                                                                         
+| INSTALL_STRIP_PROGRAM=''                                                                                                                                                  
+| LD='/usr/bin/ld'                                                                                                                                                          
+| LDFLAGS='-L/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug/lib'                                                                                                   
+| LIBFFI_BUILD_VERSIONED_SHLIB_FALSE=''                                                                                                                                     
+| LIBFFI_BUILD_VERSIONED_SHLIB_GNU_FALSE=''                                                                                                                                 
+| LIBFFI_BUILD_VERSIONED_SHLIB_GNU_TRUE=''                                                                                                                                  
+| LIBFFI_BUILD_VERSIONED_SHLIB_SUN_FALSE=''                                                                                                                                 
+| LIBFFI_BUILD_VERSIONED_SHLIB_SUN_TRUE=''                                                                                                                                  
+| LIBFFI_BUILD_VERSIONED_SHLIB_TRUE=''                                                                                                                                      
+| LIBOBJS=''                                                                                                                                                                
+| LIBS=''                                                                                                                                                                   
+| LIBTOOL=''                                                                                                                                                                
+| LIPO=''                                                                                                                                                                   
+| LN_S=''                                                                                                                                                                   
+| LTLIBOBJS=''                                                                                                                                                              
+| LT_SYS_LIBRARY_PATH=''                                                                                                                                                    
+| MAINT=''                                                                                                                                                                  
+| MAINTAINER_MODE_FALSE=''                                                                                                                                                  
+| MAINTAINER_MODE_TRUE=''                                                                                                                                                   
+| MAKEINFO=''                                                                                                                                                               
+| MANIFEST_TOOL=''                                                                                                                                                          
+| MKDIR_P=''                                                                                                                                                                
+| NM='/usr/bin/nm'                                                                                                                                                          
+| NMEDIT=''                                                                                                                                                                 
+| OBJDUMP='/usr/bin/objdump'                                                                                                                                                
+| OBJEXT=''                                                                                                                                                                 
+| OPT_LDFLAGS=''                                                                                                                                                            
+| OTOOL64=''                                                                                                                                                                
+| OTOOL=''                                                                                                                                                                  
+| PACKAGE=''                                                                                                                                                                
+| PACKAGE_BUGREPORT='http://github.com/libffi/libffi/issues'                                                                                                                
+| PACKAGE_NAME='libffi'                                                                                                                                                     
+| PACKAGE_STRING='libffi 3.5.1'                                                                                                                                             
+| PACKAGE_TARNAME='libffi'                                                                                                                                                  
+| PACKAGE_URL=''                                                                                                                                                            
+| PACKAGE_VERSION='3.5.1'                                                                                                                                                   
+| PATH_SEPARATOR=':'                                                                                                                                                        
+| PRTDIAG=''                                                                                                                                                                
+| RANLIB='/usr/bin/ranlib'                                                                                                                                                  
+| READELF=''                                                                                                                                                                
+| SECTION_LDFLAGS=''                                                                                                                                                        
+| SED=''                                                                                                                                                                    
+| SET_MAKE=''                                                                                                                                                               
+| SHELL='/bin/bash'                                                                                                                                                         
+| STRIP='/usr/bin/strip'                                                                                                                                                    
+| TARGET=''                                                                                                                                                                 
+| TARGETDIR=''                                                                                                                                                              
+| TARGET_OBJ=''                                                                                                                                                             
+| TESTSUBDIR_FALSE=''                                                                                                                                                       
+| TESTSUBDIR_TRUE=''                                                                                                                                                        
+| VERSION=''                                                                                                                                                                
+| ac_ct_AR=''                                                                                                                                                               
+| ac_ct_CC=''                                                                                                                                                               
+| ac_ct_CXX=''                                                                                                                                                              
+| ac_ct_DUMPBIN=''                                                                                                                                                          
+| ac_ct_READELF=''                                                                                                                                                          
+| am__EXEEXT_FALSE=''                                                                                                                                                       
+| am__EXEEXT_TRUE=''                                                                                                                                                        
+| am__fastdepCCAS_FALSE=''                                                                                                                                                  
+| am__fastdepCCAS_TRUE=''                                                                                                                                                   
+| am__fastdepCC_FALSE=''                                                                                                                                                    
+| am__fastdepCC_TRUE=''                                                                                                                                                     
+| am__fastdepCXX_FALSE=''                                                                                                                                                   
+| am__fastdepCXX_TRUE=''                                                                                                                                                    
+| am__include=''                                                                                                                                                            
+| am__isrc=''                                                                                                                                                               
+| am__leading_dot=''                                                                                                                                                        
+| am__nodep=''                                                                                                                                                              
+| am__quote=''                                                                                                                                                              
+| am__rm_f_notfound=''                                                                                                                                                      
+| am__tar=''                                                                                                                                                                
+| am__untar=''                                                                                                                                                              
+| am__xargs_n=''                                                                                                                                                            
+| ax_enable_builddir_sed=''                                                                                                                                                 
+| bindir='${prefix}/../tools/libffi/debug/bin'                                                                                                                              
+| build=''                                                                                                                                                                  
+| build_alias=''                                                                                                                                                            
+| build_cpu=''                                                                                                                                                              
+| build_os=''                                                                                                                                                               
+| build_vendor=''                                                                                                                                                           
+| datadir='${datarootdir}'                                                                                                                                                  
+| datarootdir='${prefix}/share/libffi'                                                                                                                                      
+| docdir='${prefix}/share/libffi'                                                                                                                                           
+| dvidir='${docdir}'                                                                                                                                                        
+| exec_prefix='NONE'                                                                                                                                                        
+| host=''                                                                                                                                                                   
+| host_alias=''                                                                                                                                                             
+| host_cpu=''                                                                                                                                                               
+| host_os=''                                                                                                                                                                
+| host_vendor=''                                                                                                                                                            
+| htmldir='${docdir}'                                                                                                                                                       
+| includedir='${prefix}/../include'                                                                                                                                         
+| infodir='${datarootdir}/info'                                                                                                                                             
+| install_sh=''                                                                                                                                                             
+| libdir='${prefix}/lib'                                                                                                                                                    
+| libexecdir='${exec_prefix}/libexec'                                                                                                                                       
+| localedir='${datarootdir}/locale'                                                                                                                                         
+| localstatedir='${prefix}/var'                                                                                                                                             
+| mandir='${prefix}/share/libffi'                                                                                                                                           
+| mkdir_p=''                                                                                                                                                                
+| oldincludedir='/usr/include'                                                                                                                                              
+| pdfdir='${docdir}'                                                                                                                                                        
+| prefix='/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug'                                                                                                          
+| program_transform_name='s,x,x,'                                                                                                                                           
+| psdir='${docdir}'                                                                                                                                                         
+| runstatedir='${localstatedir}/run'                                                                                                                                        
+| sbindir='${prefix}/../tools/libffi/debug/sbin'                                                                                                                            
+| sharedstatedir='${prefix}/com'                                                                                                                                            
+| sys_symbol_underscore=''                                                                                                                                                  
+| sysconfdir='${prefix}/etc'                                                                                                                                                
+| target=''                                                                                                                                                                 
+| target_alias=''                                                                                                                                                           
+| target_cpu=''                                                                                                                                                             
+| target_os=''                                                                                                                                                              
+| target_vendor=''                                                                                                                                                          
+| tmake_file=''                                                                                                                                                             
+| toolexecdir=''                                                                                                                                                            
+| toolexeclibdir=''                                                                                                                                                         
+|                                                                                                                                                                           
+| ## ----------- ##                                                                                                                                                         
+| ## confdefs.h. ##                                                                                                                                                         
+| ## ----------- ##                                                                                                                                                         
+|                                                                                                                                                                           
+| /* confdefs.h */                                                                                                                                                          
+| #define PACKAGE_NAME "libffi"                                                                                                                                             
+| #define PACKAGE_TARNAME "libffi"                                                                                                                                          
+| #define PACKAGE_VERSION "3.5.1"                                                                                                                                           
+| #define PACKAGE_STRING "libffi 3.5.1"                                                                                                                                     
+| #define PACKAGE_BUGREPORT "http://github.com/libffi/libffi/issues"                                                                                                        
+| #define PACKAGE_URL ""                                                                                                                                                    
+|                                                                                                                                                                           
+| configure: exit 2                                                                                                                                                         
+| ```                                                                                                                                                                       
+| </details>                                                                                                                                                                
+|                                                                                                                                                                           
+| **Additional context**                                                                                                                                                    
+|                                                                                                                                                                           
+| <details><summary>vcpkg.json</summary>                                                                                                                                    
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+| {                                                                                                                                                                         
+|   "dependencies": [                                                                                                                                                       
+|     "enet6",                                                                                                                                                              
+|     "fast-float",                                                                                                                                                         
+|     "libflac",                                                                                                                                                            
+|     "libffi",                                                                                                                                                             
+|     "miniupnpc",                                                                                                                                                          
+|     "libobfuscate",                                                                                                                                                       
+|     "libogg",                                                                                                                                                             
+|     "libopusenc",                                                                                                                                                         
+|     "opus",                                                                                                                                                               
+|     "opusfile",                                                                                                                                                           
+|     "sdl3-image",                                                                                                                                                         
+|     "sdl3-ttf",                                                                                                                                                           
+|     "tiny-aes-c",                                                                                                                                                         
+|     "tinyexpr",                                                                                                                                                           
+|     "unordered-dense",                                                                                                                                                    
+|     "libvorbis",                                                                                                                                                          
+|     "angelscript",                                                                                                                                                        
+|     "reactphysics3d",                                                                                                                                                     
+|     "bass",                                                                                                                                                               
+|     "bass-fx",                                                                                                                                                            
+|     "bassmix",                                                                                                                                                            
+|     "steam-audio-official",                                                                                                                                               
+|     {                                                                                                                                                                     
+|       "name": "openssl",                                                                                                                                                  
+|       "default-features": false                                                                                                                                           
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "curl",                                                                                                                                                     
+|       "default-features": false,                                                                                                                                          
+|       "features": [                                                                                                                                                       
+|         "openssl"                                                                                                                                                         
+|       ]                                                                                                                                                                   
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "libplist",                                                                                                                                                 
+|       "platform": "windows|osx|linux"                                                                                                                                     
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "sdl3",                                                                                                                                                     
+|       "features": [                                                                                                                                                       
+|         "vulkan"                                                                                                                                                          
+|       ],                                                                                                                                                                  
+|       "platform": "windows|osx|ios|android"                                                                                                                               
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "sdl3",                                                                                                                                                     
+|       "platform": "linux",                                                                                                                                                
+|       "features": [                                                                                                                                                       
+|         "vulkan",                                                                                                                                                         
+|         "ibus",                                                                                                                                                           
+|         "wayland",                                                                                                                                                        
+|         "x11"                                                                                                                                                             
+|       ]                                                                                                                                                                   
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "freetype",                                                                                                                                                 
+|       "default-features": false,                                                                                                                                          
+|       "features": [                                                                                                                                                       
+|         "bzip2",                                                                                                                                                          
+|         "error-strings",                                                                                                                                                  
+|         "subpixel-rendering",                                                                                                                                             
+|         "zlib"                                                                                                                                                            
+|       ]                                                                                                                                                                   
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "universalspeech",                                                                                                                                          
+|       "platform": "windows"                                                                                                                                               
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "poco",                                                                                                                                                     
+|       "default-features": false,                                                                                                                                          
+|       "features": [                                                                                                                                                       
+|         "net",                                                                                                                                                            
+|         "netssl",                                                                                                                                                         
+|         "json",                                                                                                                                                           
+|         "util",                                                                                                                                                           
+|         "xml",                                                                                                                                                            
+|         "zip",                                                                                                                                                            
+|         "encodings",                                                                                                                                                      
+|         "mongodb",                                                                                                                                                        
+|         "redis",                                                                                                                                                          
+|         "jwt",                                                                                                                                                            
+|         "prometheus",                                                                                                                                                     
+|         "sevenzip"                                                                                                                                                        
+|       ]                                                                                                                                                                   
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "libgit2",                                                                                                                                                  
+|       "default-features": false,                                                                                                                                          
+|       "features": [                                                                                                                                                       
+|         "pcre2"                                                                                                                                                           
+|       ]                                                                                                                                                                   
+|     },                                                                                                                                                                    
+|     {                                                                                                                                                                     
+|       "name": "libarchive",                                                                                                                                               
+|       "default-features": false,                                                                                                                                          
+|       "platform": "windows|osx|linux",                                                                                                                                    
+|       "features": [                                                                                                                                                       
+|         "bzip2",                                                                                                                                                          
+|         "lz4",                                                                                                                                                            
+|         "lzma",                                                                                                                                                           
+|         "zstd"                                                                                                                                                            
+|       ]                                                                                                                                                                   
+|     }                                                                                                                                                                     
+|   ],                                                                                                                                                                      
+|   "builtin-baseline": "10a80bc3030382adc2715be46db30ec12878ff68"                                                                                                          
+| }                                                                                                                                                                         
+|                                                                                                                                                                           
+| ```                                                                                                                                                                       
+| </details>                                                                                                                                                                
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::endgroup::                                                                                                               
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::group::config-x64-linux-dbg-config.log                                                                                   
+| This file contains any messages produced by compilers while                                                                                                               
+| running configure, to aid debugging if configure makes a mistake.                                                                                                         
+|                                                                                                                                                                           
+| It was created by libffi configure 3.5.1, which was                                                                                                                       
+| generated by GNU Autoconf 2.72.  Invocation command line was                                                                                                              
+|                                                                                                                                                                           
+|   $ ./../src/libffi-3-a8e988eb55.clean/configure --enable-portable-binary --disable-docs --disable-multi-os-directory lt_cv_deplibs_check_method=pass_all --prefix=/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug '--bindir=${prefix}/../tools/libffi/debug/bin' '--sbindir=${prefix}/../tools/libffi/debug/sbin' '--libdir=${prefix}/lib' '--includedir=${prefix}/../include' '--mandir=${prefix}/share/libffi' '--docdir=${prefix}/share/libffi' '--datarootdir=${prefix}/share/libffi' --disable-shared --enable-static                                                                                                                                                                           
+|                                                                                                                                                                           
+| ## --------- ##                                                                                                                                                           
+| ## Platform. ##                                                                                                                                                           
+| ## --------- ##                                                                                                                                                           
+|                                                                                                                                                                           
+| hostname = docker-desktop                                                                                                                                                 
+| uname -m = x86_64                                                                                                                                                         
+| uname -r = 6.6.87.2-microsoft-standard-WSL2                                                                                                                               
+| uname -s = Linux                                                                                                                                                          
+| uname -v = #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025                                                                                                            
+|                                                                                                                                                                           
+| /usr/bin/uname -p = x86_64                                                                                                                                                
+| /bin/uname -X     = unknown                                                                                                                                               
+|                                                                                                                                                                           
+| /bin/arch              = x86_64                                                                                                                                           
+| /usr/bin/arch -k       = unknown                                                                                                                                          
+| /usr/convex/getsysinfo = unknown                                                                                                                                          
+| /usr/bin/hostinfo      = unknown                                                                                                                                          
+| /bin/machine           = unknown                                                                                                                                          
+| /usr/bin/oslevel       = unknown                                                                                                                                          
+| /bin/universe          = unknown                                                                                                                                          
+|                                                                                                                                                                           
+| PATH: /opt/acttoolcache/node/18.20.8/x64/bin/                                                                                                                             
+| PATH: /usr/local/sbin/                                                                                                                                                    
+| PATH: /usr/local/bin/                                                                                                                                                     
+| PATH: /usr/sbin/                                                                                                                                                          
+| PATH: /usr/bin/                                                                                                                                                           
+| PATH: /sbin/                                                                                                                                                              
+| PATH: /bin/                                                                                                                                                               
+| PATH: /usr/games/                                                                                                                                                         
+| PATH: /usr/local/games/                                                                                                                                                   
+| PATH: /snap/bin/                                                                                                                                                          
+| PATH: /mnt/d/repos/nvgt/vcpkg/bin/downloads/tools/ninja-1.13.2-linux/                                                                                                     
+|                                                                                                                                                                           
+|                                                                                                                                                                           
+| ## ----------- ##                                                                                                                                                         
+| ## Core tests. ##                                                                                                                                                         
+| ## ----------- ##                                                                                                                                                         
+|                                                                                                                                                                           
+| configure:3048: looking for aux files: ltmain.sh compile missing install-sh config.guess config.sub                                                                       
+| configure:3061:  trying ./../src/libffi-3-a8e988eb55.clean/                                                                                                               
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/ltmain.sh found                                                                                                      
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/compile found                                                                                                        
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/missing found                                                                                                        
+| configure:3072:   ./../src/libffi-3-a8e988eb55.clean/install-sh found                                                                                                     
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/config.guess found                                                                                                   
+| configure:3090:   ./../src/libffi-3-a8e988eb55.clean/config.sub found                                                                                                     
+| configure:3215: error: cannot run /bin/bash ./../src/libffi-3-a8e988eb55.clean/config.sub                                                                                 
+|                                                                                                                                                                           
+| ## ---------------- ##                                                                                                                                                    
+| ## Cache variables. ##                                                                                                                                                    
+| ## ---------------- ##                                                                                                                                                    
+|                                                                                                                                                                           
+| ac_cv_env_CCASFLAGS_set=                                                                                                                                                  
+| ac_cv_env_CCASFLAGS_value=                                                                                                                                                
+| ac_cv_env_CCAS_set=set                                                                                                                                                    
+| ac_cv_env_CCAS_value='/usr/bin/cc -c'                                                                                                                                     
+| ac_cv_env_CPPFLAGS_set=                                                                                                                                                   
+| ac_cv_env_CPPFLAGS_value=                                                                                                                                                 
+| ac_cv_env_CXXCPP_set=                                                                                                                                                     
+| ac_cv_env_CXXCPP_value=                                                                                                                                                   
+| ac_cv_env_LT_SYS_LIBRARY_PATH_set=                                                                                                                                        
+| ac_cv_env_LT_SYS_LIBRARY_PATH_value=                                                                                                                                      
+| ac_cv_env_build_alias_set=                                                                                                                                                
+| ac_cv_env_build_alias_value=                                                                                                                                              
+| ac_cv_env_host_alias_set=                                                                                                                                                 
+| ac_cv_env_host_alias_value=                                                                                                                                               
+| ac_cv_env_target_alias_set=                                                                                                                                               
+| ac_cv_env_target_alias_value=                                                                                                                                             
+| lt_cv_deplibs_check_method=pass_all                                                                                                                                       
+|                                                                                                                                                                           
+| ## ----------------- ##                                                                                                                                                   
+| ## Output variables. ##                                                                                                                                                   
+| ## ----------------- ##                                                                                                                                                   
+|                                                                                                                                                                           
+| ACLOCAL=''                                                                                                                                                                
+| AMDEPBACKSLASH=''                                                                                                                                                         
+| AMDEP_FALSE=''                                                                                                                                                            
+| AMDEP_TRUE=''                                                                                                                                                             
+| AMTAR=''                                                                                                                                                                  
+| AM_BACKSLASH=''                                                                                                                                                           
+| AM_DEFAULT_V=''                                                                                                                                                           
+| AM_DEFAULT_VERBOSITY=''                                                                                                                                                   
+| AM_LTLDFLAGS=''                                                                                                                                                           
+| AM_RUNTESTFLAGS=''                                                                                                                                                        
+| AM_V=''                                                                                                                                                                   
+| AR='/usr/bin/ar'                                                                                                                                                          
+| AUTOCONF=''                                                                                                                                                               
+| AUTOHEADER=''                                                                                                                                                             
+| AUTOMAKE=''                                                                                                                                                               
+| AWK=''                                                                                                                                                                    
+| BUILD_DOCS_FALSE=''                                                                                                                                                       
+| BUILD_DOCS_TRUE=''                                                                                                                                                        
+| CC='/usr/bin/cc'                                                                                                                                                          
+| CCAS='/usr/bin/cc -c'                                                                                                                                                     
+| CCASDEPMODE=''                                                                                                                                                            
+| CCASFLAGS=''                                                                                                                                                              
+| CCDEPMODE=''                                                                                                                                                              
+| CFLAGS='-fPIC -g'                                                                                                                                                         
+| CPPFLAGS=''                                                                                                                                                               
+| CSCOPE=''                                                                                                                                                                 
+| CTAGS=''                                                                                                                                                                  
+| CXX='/usr/bin/c++'                                                                                                                                                        
+| CXXCPP=''                                                                                                                                                                 
+| CXXDEPMODE=''                                                                                                                                                             
+| CXXFLAGS='-fPIC -g'                                                                                                                                                       
+| CYGPATH_W=''                                                                                                                                                              
+| DEFS=''                                                                                                                                                                   
+| DEPDIR=''                                                                                                                                                                 
+| DLLTOOL='CMAKE_DLLTOOL-NOTFOUND'                                                                                                                                          
+| DSYMUTIL=''                                                                                                                                                               
+| DUMPBIN=''                                                                                                                                                                
+| ECHO_C=''                                                                                                                                                                 
+| ECHO_N='-n'                                                                                                                                                               
+| ECHO_T=''                                                                                                                                                                 
+| EGREP=''                                                                                                                                                                  
+| ETAGS=''                                                                                                                                                                  
+| EXEEXT=''                                                                                                                                                                 
+| FFI_DEBUG_FALSE=''                                                                                                                                                        
+| FFI_DEBUG_TRUE=''                                                                                                                                                         
+| FFI_EXEC_TRAMPOLINE_TABLE=''                                                                                                                                              
+| FFI_EXEC_TRAMPOLINE_TABLE_FALSE=''                                                                                                                                        
+| FFI_EXEC_TRAMPOLINE_TABLE_TRUE=''                                                                                                                                         
+| FFI_VERSION_NUMBER='30501'                                                                                                                                                
+| FFI_VERSION_STRING='3.5.1'                                                                                                                                                
+| FGREP=''                                                                                                                                                                  
+| FILECMD=''                                                                                                                                                                
+| GREP=''                                                                                                                                                                   
+| HAVE_LONG_DOUBLE=''                                                                                                                                                       
+| HAVE_LONG_DOUBLE_VARIANT=''                                                                                                                                               
+| INSTALL_DATA=''                                                                                                                                                           
+| INSTALL_PROGRAM=''                                                                                                                                                        
+| INSTALL_SCRIPT=''                                                                                                                                                         
+| INSTALL_STRIP_PROGRAM=''                                                                                                                                                  
+| LD='/usr/bin/ld'                                                                                                                                                          
+| LDFLAGS='-L/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug/lib'                                                                                                   
+| LIBFFI_BUILD_VERSIONED_SHLIB_FALSE=''                                                                                                                                     
+| LIBFFI_BUILD_VERSIONED_SHLIB_GNU_FALSE=''                                                                                                                                 
+| LIBFFI_BUILD_VERSIONED_SHLIB_GNU_TRUE=''                                                                                                                                  
+| LIBFFI_BUILD_VERSIONED_SHLIB_SUN_FALSE=''                                                                                                                                 
+| LIBFFI_BUILD_VERSIONED_SHLIB_SUN_TRUE=''                                                                                                                                  
+| LIBFFI_BUILD_VERSIONED_SHLIB_TRUE=''                                                                                                                                      
+| LIBOBJS=''                                                                                                                                                                
+| LIBS=''                                                                                                                                                                   
+| LIBTOOL=''                                                                                                                                                                
+| LIPO=''                                                                                                                                                                   
+| LN_S=''                                                                                                                                                                   
+| LTLIBOBJS=''                                                                                                                                                              
+| LT_SYS_LIBRARY_PATH=''                                                                                                                                                    
+| MAINT=''                                                                                                                                                                  
+| MAINTAINER_MODE_FALSE=''                                                                                                                                                  
+| MAINTAINER_MODE_TRUE=''                                                                                                                                                   
+| MAKEINFO=''                                                                                                                                                               
+| MANIFEST_TOOL=''                                                                                                                                                          
+| MKDIR_P=''                                                                                                                                                                
+| NM='/usr/bin/nm'                                                                                                                                                          
+| NMEDIT=''                                                                                                                                                                 
+| OBJDUMP='/usr/bin/objdump'                                                                                                                                                
+| OBJEXT=''                                                                                                                                                                 
+| OPT_LDFLAGS=''                                                                                                                                                            
+| OTOOL64=''                                                                                                                                                                
+| OTOOL=''                                                                                                                                                                  
+| PACKAGE=''                                                                                                                                                                
+| PACKAGE_BUGREPORT='http://github.com/libffi/libffi/issues'                                                                                                                
+| PACKAGE_NAME='libffi'                                                                                                                                                     
+| PACKAGE_STRING='libffi 3.5.1'                                                                                                                                             
+| PACKAGE_TARNAME='libffi'                                                                                                                                                  
+| PACKAGE_URL=''                                                                                                                                                            
+| PACKAGE_VERSION='3.5.1'                                                                                                                                                   
+| PATH_SEPARATOR=':'                                                                                                                                                        
+| PRTDIAG=''                                                                                                                                                                
+| RANLIB='/usr/bin/ranlib'                                                                                                                                                  
+| READELF=''                                                                                                                                                                
+| SECTION_LDFLAGS=''                                                                                                                                                        
+| SED=''                                                                                                                                                                    
+| SET_MAKE=''                                                                                                                                                               
+| SHELL='/bin/bash'                                                                                                                                                         
+| STRIP='/usr/bin/strip'                                                                                                                                                    
+| TARGET=''                                                                                                                                                                 
+| TARGETDIR=''                                                                                                                                                              
+| TARGET_OBJ=''                                                                                                                                                             
+| TESTSUBDIR_FALSE=''                                                                                                                                                       
+| TESTSUBDIR_TRUE=''                                                                                                                                                        
+| VERSION=''                                                                                                                                                                
+| ac_ct_AR=''                                                                                                                                                               
+| ac_ct_CC=''                                                                                                                                                               
+| ac_ct_CXX=''                                                                                                                                                              
+| ac_ct_DUMPBIN=''                                                                                                                                                          
+| ac_ct_READELF=''                                                                                                                                                          
+| am__EXEEXT_FALSE=''                                                                                                                                                       
+| am__EXEEXT_TRUE=''                                                                                                                                                        
+| am__fastdepCCAS_FALSE=''                                                                                                                                                  
+| am__fastdepCCAS_TRUE=''                                                                                                                                                   
+| am__fastdepCC_FALSE=''                                                                                                                                                    
+| am__fastdepCC_TRUE=''                                                                                                                                                     
+| am__fastdepCXX_FALSE=''                                                                                                                                                   
+| am__fastdepCXX_TRUE=''                                                                                                                                                    
+| am__include=''                                                                                                                                                            
+| am__isrc=''                                                                                                                                                               
+| am__leading_dot=''                                                                                                                                                        
+| am__nodep=''                                                                                                                                                              
+| am__quote=''                                                                                                                                                              
+| am__rm_f_notfound=''                                                                                                                                                      
+| am__tar=''                                                                                                                                                                
+| am__untar=''                                                                                                                                                              
+| am__xargs_n=''                                                                                                                                                            
+| ax_enable_builddir_sed=''                                                                                                                                                 
+| bindir='${prefix}/../tools/libffi/debug/bin'                                                                                                                              
+| build=''                                                                                                                                                                  
+| build_alias=''                                                                                                                                                            
+| build_cpu=''                                                                                                                                                              
+| build_os=''                                                                                                                                                               
+| build_vendor=''                                                                                                                                                           
+| datadir='${datarootdir}'                                                                                                                                                  
+| datarootdir='${prefix}/share/libffi'                                                                                                                                      
+| docdir='${prefix}/share/libffi'                                                                                                                                           
+| dvidir='${docdir}'                                                                                                                                                        
+| exec_prefix='NONE'                                                                                                                                                        
+| host=''                                                                                                                                                                   
+| host_alias=''                                                                                                                                                             
+| host_cpu=''                                                                                                                                                               
+| host_os=''                                                                                                                                                                
+| host_vendor=''                                                                                                                                                            
+| htmldir='${docdir}'                                                                                                                                                       
+| includedir='${prefix}/../include'                                                                                                                                         
+| infodir='${datarootdir}/info'                                                                                                                                             
+| install_sh=''                                                                                                                                                             
+| libdir='${prefix}/lib'                                                                                                                                                    
+| libexecdir='${exec_prefix}/libexec'                                                                                                                                       
+| localedir='${datarootdir}/locale'                                                                                                                                         
+| localstatedir='${prefix}/var'                                                                                                                                             
+| mandir='${prefix}/share/libffi'                                                                                                                                           
+| mkdir_p=''                                                                                                                                                                
+| oldincludedir='/usr/include'                                                                                                                                              
+| pdfdir='${docdir}'                                                                                                                                                        
+| prefix='/mnt/d/repos/nvgt/vcpkg/vcpkg_installed/x64-linux/debug'                                                                                                          
+| program_transform_name='s,x,x,'                                                                                                                                           
+| psdir='${docdir}'                                                                                                                                                         
+| runstatedir='${localstatedir}/run'                                                                                                                                        
+| sbindir='${prefix}/../tools/libffi/debug/sbin'                                                                                                                            
+| sharedstatedir='${prefix}/com'                                                                                                                                            
+| sys_symbol_underscore=''                                                                                                                                                  
+| sysconfdir='${prefix}/etc'                                                                                                                                                
+| target=''                                                                                                                                                                 
+| target_alias=''                                                                                                                                                           
+| target_cpu=''                                                                                                                                                             
+| target_os=''                                                                                                                                                              
+| target_vendor=''                                                                                                                                                          
+| tmake_file=''                                                                                                                                                             
+| toolexecdir=''                                                                                                                                                            
+| toolexeclibdir=''                                                                                                                                                         
+|                                                                                                                                                                           
+| ## ----------- ##                                                                                                                                                         
+| ## confdefs.h. ##                                                                                                                                                         
+| ## ----------- ##                                                                                                                                                         
+|                                                                                                                                                                           
+| /* confdefs.h */                                                                                                                                                          
+| #define PACKAGE_NAME "libffi"                                                                                                                                             
+| #define PACKAGE_TARNAME "libffi"                                                                                                                                          
+| #define PACKAGE_VERSION "3.5.1"                                                                                                                                           
+| #define PACKAGE_STRING "libffi 3.5.1"                                                                                                                                     
+| #define PACKAGE_BUGREPORT "http://github.com/libffi/libffi/issues"                                                                                                        
+| #define PACKAGE_URL ""                                                                                                                                                    
+|                                                                                                                                                                           
+| configure: exit 2                                                                                                                                                         
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::endgroup::                                                                                                               
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::group::config-x64-linux-dbg-err.log                                                                                      
+| configure: error: cannot run /bin/bash ./../src/libffi-3-a8e988eb55.clean/config.sub                                                                                      
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  ::endgroup::                                                                                                               
+|                                                                                                                                                                           
+| Completed submission of vcpkg-make:x64-linux@2025-10-26 to 1 binary cache(s) in 8.95 ms                                                                                   
+|                                                                                                                                                                           
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  Failure - Main Bagimliliklari Derle [27m55.2861049s]                                                                       
+[Kiral Release (FULL PAKET)/linux_build  ] failed to inspect exec: Error response from daemon: No such exec instance: a126a445cfea6963188c36a7143011c6e8a400c786c55b6293a9cd5f8ab73cc1                                                                                                                                                                  
+[Kiral Release (FULL PAKET)/linux_build  ] ? Run Complete job                                                                                                              
+[Kiral Release (FULL PAKET)/linux_build  ]   ?  Success - Complete job                                                                                                     
+[Kiral Release (FULL PAKET)/linux_build  ] ??  Job failed                                                                                                                   
+Error: Job 'linux_build' failed                                                                                                                                             
+                                                                                                                                                                            
+D
