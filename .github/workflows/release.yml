@@ -1,54 +1,58 @@
-name: Kiral Build
+name: Kiral Release
 
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
+  # --- LINUX DERLEME ---
   linux_build:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: true
-
-    - name: Kutuphaneleri ve Araclari Yukle
+    
+    # Kutuphaneler
+    - name: Kutuphaneleri Yukle
       run: |
         sudo apt update
         sudo apt install -y build-essential libtool mesa-common-dev libxext-dev libxcursor-dev ladspa-sdk libxcomposite-dev libsystemd-dev autoconf libxxf86vm-dev libgl1-mesa-dev libxinerama-dev libx11-dev libltdl-dev libgtk-4-dev libglib2.0-dev libspeechd-dev libudev-dev linux-libc-dev libxrandr-dev libxrender-dev libwayland-dev pkg-config xorg-dev libglu1-mesa-dev libxft-dev libgsasl-dev clang python3-jinja2 zip gcc-aarch64-linux-gnu g++-aarch64-linux-gnu autoconf autoconf-archive automake libtool dos2unix
 
-    - name: Dosyalari Yika ve Yagla (Windows Duzeltmesi)
-      run: |
-        find . -type f \( -name "*.sh" -o -name "*.py" -o -name "configure" -o -name "*.ac" -o -name "*.in" -o -name "SConstruct" -o -name "SConscript" \) -exec dos2unix -q {} +
-        find vcpkg -type f -exec dos2unix -q {} + || true
-        chmod +x -R vcpkg
-        find . -name "*.sh" -exec chmod +x {} \;
-
+    # Bagimliliklar (vcpkg)
     - name: Bagimliliklari Derle
       run: python3 vcpkg/build_dependencies.py --archive
 
-    - name: Ana Derleme (Scons)
+    # Asil Derleme
+    - name: NVGT Derle
       run: |
         pip3 install scons
         chmod +x build/build_linux.sh
         dos2unix build/build_linux.sh
         ./build/build_linux.sh ci
 
-    # --- ISTE YENI KISIM BURASI ---
-    - name: Dosyayi Paketle ve Bize Ver
-      uses: actions/upload-artifact@v4
+    # Dosyayi Paketle (tar.gz yap)
+    - name: Paketle
+      run: |
+        cd release
+        tar -czf ../nvgt_linux.tar.gz *
+    
+    # Sonucu Kenara Koy
+    - uses: actions/upload-artifact@v4
       with:
-        name: nvgt-linux
-        path: |
-          nvgt
-          build/nvgt
-    # -----------------------------
+        name: linux_paket
+        path: nvgt_linux.tar.gz
 
+  # --- WINDOWS DERLEME ---
   windows_build:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: true
-
+    
     - uses: jwlawson/actions-setup-cmake@v2
       with:
         cmake-version: '3.25.1'
@@ -56,14 +60,36 @@ jobs:
     - name: Bagimliliklari Derle
       run: python3 vcpkg/build_dependencies.py --archive
 
-    - name: Derle Baba
+    - name: NVGT Derle
       run: |
         pip3 install scons
         choco install -y upx
         scons -s no_upx=0
-    
-    - name: Windows Dosyasini da Paketle
-      uses: actions/upload-artifact@v4
+
+    # Sonucu Kenara Koy
+    - uses: actions/upload-artifact@v4
       with:
-        name: nvgt-windows
-        path: nvgt.exe
+        name: windows_paket
+        path: release/nvgt.exe
+
+  # --- FINAL: RELEASE OLUSTURMA ---
+  create_release:
+    runs-on: ubuntu-latest
+    needs: [linux_build, windows_build]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Release Olustur
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Kiral Sürüm v${{ github.run_number }}
+          draft: false
+          prerelease: false
+          files: |
+            artifacts/linux_paket/nvgt_linux.tar.gz
+            artifacts/windows_paket/nvgt.exe
