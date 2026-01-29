@@ -1,3 +1,25 @@
-*.nvgt linguist-language=angelscript
-_SConscript linguist-language=python
-test/data/** binary
+# Her seyi Linux (LF) satir sonu yapmaya zorla
+* text=auto eol=lf
+
+# Binary dosyalara dokunma (Resim, exe vb.)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.pyc binary
+*.pdf binary
+*.dll binary
+*.lib binary
+*.exe binary
+*.ttf binary
+*.otf binary

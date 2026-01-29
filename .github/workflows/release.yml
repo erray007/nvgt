@@ -1,4 +1,4 @@
-name: Kiral Release (FULL PAKET)
+name: Kiral Release (Final Fix)
 
 on:
   workflow_dispatch:
@@ -6,57 +6,59 @@ on:
     branches:
       - main
 
+# TÜM SİSTEM İÇİN DİL AYARINI SABİTLİYORUZ (ÖNEMLİ!)
+env:
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
 jobs:
-  # ==========================================
-  # 🐧 LINUX TANKI (Full Paket)
-  # ==========================================
   linux_build:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: true
-    
-    # Kütüphaneler ve İlaçlama
-    - name: Kutuphaneleri Yukle
+
+    # .gitattributes ekledik ama yine de garanti olsun diye temizlik yapiyoruz
+    - name: Kutuphaneleri Yukle ve Ortami Hazirla
       run: |
         sudo apt update
-        sudo apt install -y build-essential libtool mesa-common-dev libxext-dev libxcursor-dev ladspa-sdk libxcomposite-dev libsystemd-dev autoconf libxxf86vm-dev libgl1-mesa-dev libxinerama-dev libx11-dev libltdl-dev libgtk-4-dev libglib2.0-dev libspeechd-dev libudev-dev linux-libc-dev libxrandr-dev libxrender-dev libwayland-dev pkg-config xorg-dev libglu1-mesa-dev libxft-dev libgsasl-dev clang python3-jinja2 zip gcc-aarch64-linux-gnu g++-aarch64-linux-gnu autoconf autoconf-archive automake libtool dos2unix
+        sudo apt install -y build-essential libtool autoconf automake dos2unix python3-jinja2 zip pkg-config clang
+        # Diğer kütüphaneler vcpkg ile hallediliyor, sistemi yormayalım
 
-    - name: Izinleri Duzelt (Fix Permissions)
+    - name: Dosya Izinlerini Zorla (Fix Permissions)
       run: |
-        find . -type f \( -name "*.sh" -o -name "*.py" -o -name "configure" \) -exec dos2unix -q {} +
-        chmod +x -R vcpkg
+        # Scriptlere çalıştırma izni ver
         find . -name "*.sh" -exec chmod +x {} \;
+        find . -name "configure" -exec chmod +x {} \;
+        # vcpkg klasörüne tam yetki ver
+        chmod -R 777 vcpkg
 
-    - name: Bagimliliklari Derle
-      run: python3 vcpkg/build_dependencies.py --archive
+    - name: Bagimliliklari Derle (VCPKG)
+      run: |
+        # Bootstrap sırasında hata verirse diye execute izni veriyoruz
+        chmod +x vcpkg/bootstrap-vcpkg.sh
+        python3 vcpkg/build_dependencies.py --archive
 
     - name: NVGT Derle
       run: |
         pip3 install scons
         chmod +x build/build_linux.sh
+        # build scriptini de temizleyelim
         dos2unix build/build_linux.sh
         ./build/build_linux.sh ci
 
-    # --- BURASI DEĞİŞTİ: KOMPLE PAKETLEME ---
-    - name: Linux Full Paketle (Lib, Include, Stub ne varsa)
+    # --- PAKETLEME VE ARTIFACT ---
+    - name: Full Paketle
       run: |
-        # Release klasörünün içine girip HER ŞEYİ paketliyoruz
         cd release
         tar -czf ../nvgt_linux_full.tar.gz .
-        echo "Linux full paket hazir."
-
-    # Release patlasa bile bu zip dosyasını Artifacts'tan indirirsin
+    
     - uses: actions/upload-artifact@v4
       with:
         name: LINUX_FULL_DOSYALAR
         path: nvgt_linux_full.tar.gz
-    # ----------------------------------------
 
-  # ==========================================
-  # 🪟 WINDOWS MAKİNESİ (Full Paket)
-  # ==========================================
   windows_build:
     runs-on: windows-latest
     steps:
@@ -77,23 +79,15 @@ jobs:
         choco install -y upx
         scons -s no_upx=0
 
-    # --- WINDOWS FULL PAKETLEME ---
-    - name: Windows Full Paketle (Zip Yap)
+    - name: Windows Paketle
       run: |
-        # PowerShell komutuyla release klasöründeki her şeyi zipliyoruz
         Compress-Archive -Path release\* -DestinationPath nvgt_windows_full.zip
-        echo "Windows full paket hazir."
 
-    # Release patlasa bile buradan indirirsin
     - uses: actions/upload-artifact@v4
       with:
         name: WINDOWS_FULL_DOSYALAR
         path: nvgt_windows_full.zip
-    # ------------------------------
 
-  # ==========================================
-  # 🚀 RELEASE OLUŞTURMA
-  # ==========================================
   create_release:
     runs-on: ubuntu-latest
     needs: [linux_build, windows_build]
@@ -108,7 +102,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ github.run_number }}
-          name: Kiral Sürüm v${{ github.run_number }} (Full Paket)
+          name: Kiral Sürüm v${{ github.run_number }}
           draft: false
           prerelease: false
           files: |
