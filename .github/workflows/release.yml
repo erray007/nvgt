@@ -1,4 +1,4 @@
-name: Kiral Release (Final Fix)
+name: Kiral Release (Final Fix v2)
 
 on:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
     branches:
       - main
 
-# TÜM SİSTEM İÇİN DİL AYARINI SABİTLİYORUZ (ÖNEMLİ!)
 env:
   LC_ALL: C.UTF-8
   LANG: C.UTF-8
@@ -17,38 +16,32 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: true
+        submodules: recursive  # Recursive yaptık ki vcpkg içindeki her şeyi eksiksiz çeksin
 
-    # .gitattributes ekledik ama yine de garanti olsun diye temizlik yapiyoruz
-    - name: Kutuphaneleri Yukle ve Ortami Hazirla
+    - name: Kutuphaneleri Yukle
       run: |
         sudo apt update
         sudo apt install -y build-essential libtool autoconf automake dos2unix python3-jinja2 zip pkg-config clang
-        # Diğer kütüphaneler vcpkg ile hallediliyor, sistemi yormayalım
 
-    - name: Dosya Izinlerini Zorla (Fix Permissions)
+    - name: Dosya Izinlerini Duzelt (Genel Temizlik)
       run: |
-        # Scriptlere çalıştırma izni ver
-        find . -name "*.sh" -exec chmod +x {} \;
-        find . -name "configure" -exec chmod +x {} \;
-        # vcpkg klasörüne tam yetki ver
-        chmod -R 777 vcpkg
+        # Sadece mevcut sh dosyalarına izin ver, olmayanları zorlama
+        find . -name "*.sh" -exec chmod +x {} \; || true
+        find . -name "configure" -exec chmod +x {} \; || true
 
     - name: Bagimliliklari Derle (VCPKG)
       run: |
-        # Bootstrap sırasında hata verirse diye execute izni veriyoruz
-        chmod +x vcpkg/bootstrap-vcpkg.sh
+        # Manuel chmod yapmiyoruz, Python scripti kendi halletsin
         python3 vcpkg/build_dependencies.py --archive
 
     - name: NVGT Derle
       run: |
         pip3 install scons
         chmod +x build/build_linux.sh
-        # build scriptini de temizleyelim
         dos2unix build/build_linux.sh
         ./build/build_linux.sh ci
 
-    # --- PAKETLEME VE ARTIFACT ---
+    # --- PAKETLEME ---
     - name: Full Paketle
       run: |
         cd release
@@ -64,7 +57,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: true
+        submodules: recursive
     
     - uses: jwlawson/actions-setup-cmake@v2
       with:
